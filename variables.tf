@@ -3,6 +3,12 @@ variable "service_account_name" {
     type        = string
 }
 
+variable "iam_role_name" {
+    description = "AWS IAM Role name (If not specified, ${service_account_name}-role is defaulted.)"
+    type        = string
+    default     = ""
+}
+
 variable "iam_policy_arns" {
     description = "List of IAM Policy ARNs to Attach to IAM Role"
     type        = list(string)

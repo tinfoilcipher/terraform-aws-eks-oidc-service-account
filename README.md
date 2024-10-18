@@ -30,6 +30,22 @@ module "tinfoil_sa" {
 }
 ```
 
+### Create an IAM role component and Kubernetes service account and specify the IAM role name
+
+```
+module "tinfoil_sa" {
+    source                      = "tinfoilcipher/eks-service-account-with-oidc-iam-role/aws"
+    version                     = "x.x.x"
+    service_account_name        = "my-service-account"
+    iam_policy_arns             = ["arn:aws:iam::aws:policy/AmazonS3FullAccess", "arn:aws:iam::123456789012:policy/custom-policy"]
+    kubernetes_namespace        = "some-namespace"
+    enabled_sts_services        = ["ec2", "rds", "s3"]
+    openid_connect_provider_arn = module.eks_cluster.oidc_provider_arn
+    openid_connect_provider_url = module.eks_cluster.oidc_provider_url
+    iam_role_name               = "my-iam-role-name"
+}
+```
+
 ### Create IAM Role Componenets Only
 
 ```

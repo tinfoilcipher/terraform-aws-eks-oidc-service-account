@@ -1,5 +1,5 @@
 resource "aws_iam_role" "this" {
-    name                = "${var.service_account_name}-role"
+    name                = var.iam_role_name != "" ? var.iam_role_name : "${var.service_account_name}-role"
     assume_role_policy  = data.aws_iam_policy_document.this.json
 }
 
