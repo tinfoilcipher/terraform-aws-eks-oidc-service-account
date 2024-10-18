@@ -4,7 +4,7 @@ variable "service_account_name" {
 }
 
 variable "iam_role_name" {
-    description = "AWS IAM Role name (If not specified, ${service_account_name}-role is defaulted.)"
+    description = "AWS IAM Role name. Optional If not specified a role is dynamically generated"
     type        = string
     default     = ""
 }
